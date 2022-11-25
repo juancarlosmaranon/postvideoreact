@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
-import home from './../asstes/images/home.png'
+import{ Component } from 'react'
+
 
 export default class Home extends Component {
-  render() {
-    return (
-      <div class="bg-secondary">
-        <img src={home}/>
-      </div>
-    )
-  }
+  
+    render(){
+      return(
+        <div>
+          <h1>Homne</h1>
+        </div>
+      )
+    }
 }
