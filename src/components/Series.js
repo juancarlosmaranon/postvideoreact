@@ -5,25 +5,25 @@ import Global from '../Global'
 import axios from 'axios'
 import { NavLink } from 'react-router-dom'
 
-export default class Comics extends Component {
+export default class Series extends Component {
   
     state={
-      comics:[],
+      series:[],
       images:[],
       status:false
     }
 
-    loadComics=()=>{
+    loadSeries=()=>{
       var key=  Global.key;
-      var url = Global.urlApiMarvelComics + key;
+      var url = Global.urlApiMarvelSeries + key;
+      console.log(url);
       axios.get(url).then(response=>{
           this.setState({
-            comics:response.data.data.results,
+            series:response.data.data.results,
             status:true,
-          })
-        console.log(response.data.data.results.thumbnail.path+'jpg');
+        })
+        console.log(response.data.data.results)
       })
-      
       // this.loadImges();
     }
 
@@ -39,7 +39,7 @@ export default class Comics extends Component {
     // }
 
   componentDidMount = () =>{
-    this.loadComics();
+    this.loadSeries();
     
   }
   render() {
@@ -48,26 +48,23 @@ export default class Comics extends Component {
         <div style={{'marginTop':'30px'}}>
             <NavLink to={"/"} className="btn btn-danger"><FontAwesomeIcon icon={faArrowLeft}/><br/>Volver</NavLink>
         </div>
-        {
-          this.state.comics.map((comics,index)=>{
-            return(
-              <div class="card bg-danger" style={{"width": "21rem",'height':'15rem' ,"float": "left", "marginTop": "40px", "marginLeft": "70px", "marginRight": "68px", "marginBottom": "60px"}} key={index}>
                 {
-                  //hacer otro map para las imagenes
+                    this.state.series.map((series,index)=>{
+                        return(
+                            <div class="card bg-danger" style={{"width": "21rem",'height':'15rem' ,"float": "left", "marginTop": "40px", "marginLeft": "70px", "marginRight": "68px", "marginBottom": "60px"}} key={index}>
+                                <div class="card-body">
+                                    <img src="{{series.thumbnail.path}}+'.jpg'" class="card-img-top" alt="..." />
+                                    <h5 class="card-title">{ series.title }</h5>
+                                    <p class="card-text">
+                                        
+                                    </p>
+                                    
+                                    <NavLink to={"/"} className="btn btn-dark" ><FontAwesomeIcon icon={faCircleInfo}/><br/>Ver mas...</NavLink>
+                                </div>
+                            </div>
+                        )
+                    })
                 }
-                <div class="card-body">
-                  <img src="{{comics.thumbnail.path}}+'.jpg'" class="card-img-top" alt="..." />
-                  <h5 class="card-title">{ comics.title }</h5>
-                  <p class="card-text">
-                    
-                  </p>
-                  
-                  <NavLink to={"/"} className="btn btn-dark" ><FontAwesomeIcon icon={faCircleInfo}/><br/>Detalles</NavLink>
-                </div>
-              </div>
-            )
-          })
-        }
         <div>
           <div style={{'marginTop':'30px','marginBottom':'40px',"float": "left","marginLeft": "830px"}}>
             <NavLink to={"/"} className="btn btn-info"><FontAwesomeIcon icon={faPlus}/><br/>Ver mas...</NavLink>
@@ -76,7 +73,6 @@ export default class Comics extends Component {
             <NavLink to={"/"} className="btn btn-light"><FontAwesomeIcon icon={faPlus}/><br/>Ver menos</NavLink>
           </div>
         </div>
-        
       </div>
     )
   }
