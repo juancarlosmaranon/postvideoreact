@@ -1,7 +1,10 @@
 import{ Component } from 'react'
+//IMPORTAMOS UNA IMAGEN 
 import img2 from './../asstes/images/img2.gif'
+//IMPORTAMOS LOS ICONOS AÑADIDOS A LA LIBRERIA
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCameraRetro, faPaperPlane, fa2x, faDove } from '@fortawesome/free-solid-svg-icons'
+import { faCameraRetro, faPaperPlane, faDove } from '@fortawesome/free-solid-svg-icons'
+import { NavLink } from 'react-router-dom'
 
 
 export default class Home extends Component {
@@ -18,6 +21,8 @@ export default class Home extends Component {
               se asocian a funcionalidades distinitas para el consummo de un API.
             </p>
           </div>
+          {/* AÑADIMOS LOS ICONOS DE LAS REDES SOCIALES
+          Y LO DEJAMOS COMO PIE DE PAGINA */}
           <div style={{'marginTop':'120px', 'marginBottom':'20px'}}>
             <p>Redes sociales</p>
             <FontAwesomeIcon icon={faPaperPlane} style={{'margin':'20px','marginTop':'0px'}}/>

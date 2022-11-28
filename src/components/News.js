@@ -11,10 +11,9 @@ export default class News extends Component {
         <div>
           <div>
             <h1 style={{'marginTop':'20px'}}>Noticias</h1>
-            <img src={img2} style={{'width':'800px','marginBottom':'40px','marginTop':'20px'}}/>
-            
           </div>
-          <div style={{'marginTop':'120px', 'marginBottom':'20px'}}>
+          <h3 style={{'marginTop':'100px'}}>Proximamente...</h3>
+          <div style={{'marginTop':'530px', 'marginBottom':'20px'}}>
             <p>Redes sociales</p>
             <FontAwesomeIcon icon={faPaperPlane} style={{'margin':'20px','marginTop':'0px'}}/>
             <FontAwesomeIcon icon={faCameraRetro} style={{'margin':'20px','marginTop':'0px'}}/>
